@@ -26,6 +26,25 @@ public class GameEngine
             }
         }
     }
+    public void AddRoom()
+    {
+        Console.Write("Enter room name: ");
+        var name = Console.ReadLine();
+
+        Console.Write("Enter room description: ");
+        var description = Console.ReadLine();
+
+        var room = new Room
+        {
+            Name = name,
+            Description = description
+        };
+
+        _context.Rooms.Add(room);
+        _context.SaveChanges();
+
+        Console.WriteLine($"Room '{name}' added to the game.");
+    }
 
     public void DisplayCharacters()
     {
@@ -42,5 +61,32 @@ public class GameEngine
         {
             Console.WriteLine("No characters available.");
         }
+    }
+    public void AddCharacter()
+    {
+        Console.Write("Enter character name: ");
+        var name = Console.ReadLine();
+
+        Console.Write("Enter character level: ");
+        var level = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter room ID for the character: ");
+        var roomId = int.Parse(Console.ReadLine());
+
+        // TODO Add character to the room
+        // Find the room by ID
+        // If the room doesn't exist, return
+        // Otherwise, create a new character and add it to the room
+        // Save the changes to the database
+    }
+    public void FindCharacter()
+    {
+        Console.Write("Enter character name to search: ");
+        var name = Console.ReadLine();
+
+        // TODO Find the character by name
+        // Use LINQ to query the database for the character
+        // If the character exists, display the character's information
+        // Otherwise, display a message indicating the character was not found
     }
 }
